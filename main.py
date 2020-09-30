@@ -1,50 +1,56 @@
+#!/usr/bin/python3
+
 import random
 
-# Snake Water Gun or Rock Paper Scissors
-def gameWin(comp, you):
-    # If two values are equal, declare a tie!
-    if comp == you:
-        return None
+char_lst = ["snake", "water", "gun"]
+life = 1
+score = 0
+cscore = 0
+print("<--------------------- Snake, Water and Gun Game --------------------->\n")
 
-    # Check for all possibilities when computer chose s
-    elif comp == 's':
-        if you=='w':
-            return False
-        elif you=='g':
-            return True
-    
-    # Check for all possibilities when computer chose w
-    elif comp == 'w':
-        if you=='g':
-            return False
-        elif you=='s':
-            return True
-    
-    # Check for all possibilities when computer chose g
-    elif comp == 'g':
-        if you=='s':
-            return False
-        elif you=='w':
-            return True
+while life<=10:
+    rand = random.choice(char_lst)
+    print("\nChoose from snake, water or gun :")
+    choice = input()
+    if choice not in char_lst:
+        print("Invalid Input! Try Again")
+        continue
+    else:
+        if choice == "snake":
+            if rand == "snake":
+                print(rand,"- Match Tie!")
+            elif rand == "water":
+                score = score + 1
+                print(rand,"- You Win!")
+            else:
+                cscore = cscore + 1
+                print(rand,"- Computer Win!")
+        elif choice == "water":
+            if rand == "snake":
+                cscore = cscore + 1
+                print(rand,"- Computer Win!")
+            elif rand == "water":
+                print(rand,"- Match Tie!")
+            else:
+                score = score + 1
+                print(rand,"- You Win!")
+        else:
+            if rand == "snake":
+                score = score + 1
+                print(rand,"- You Win!")
+            elif rand == "water":
+                cscore = cscore + 1
+                print(rand,"- Computer Win!")
+            else:
+                print(rand,"- Match Tie!")
+    print("Your Score :", score, "& Computer Score :",cscore,"                                            (",10 - life, "no. of life left )")
+    life = life + 1
 
-print("Comp Turn: Snake(s) Water(w) or Gun(g)?")
-randNo = random.randint(1, 3) 
-if randNo == 1:
-    comp = 's'
-elif randNo == 2:
-    comp = 'w'
-elif randNo == 3:
-    comp = 'g'
-
-you = input("Your Turn: Snake(s) Water(w) or Gun(g)?")
-a = gameWin(comp, you)
-
-print(f"Computer chose {comp}")
-print(f"You chose {you}")
-
-if a == None:
-    print("The game is a tie!")
-elif a:
-    print("You Win!")
+if life>10:
+    print("Game Over!")
+if score>cscore:
+    print("Congrats You Won !")
+elif score==cscore:
+    print("Match Tie!")
 else:
-    print("You Lose!")
+    print("You are a Losser !")
