@@ -1,5 +1,5 @@
 # Snake-Water-Gun-game
 Snake Water Gun game
 
-#helooo py
+#hellloo py
 #pyqrcode jinja code
