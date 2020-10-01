@@ -3,4 +3,4 @@ Snake Water Gun game
 
 #helooo py
 #pyqrcode jinja code
-thank you
+thank you.
